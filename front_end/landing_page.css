@@ -1,57 +1,150 @@
+:root {
+    --primary: #ff5722;
+    --dark: #222831;
+    --secondary: #2d4059;
+    --light: #eeeeee;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--dark);
+    background-color: var(--light);
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+h2{
+    color: var(--dark);
+    font-weight: bold;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+h4{
+    color: var(--secondary);
 }
 
-p {
-    text-align: center;
-    margin-bottom: 30px;
+.navbar {
+    background-color: var(--dark) !important;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
 }
 
-form {
-    margin-bottom: 20px;
+.navbar-brand {
+    color: var(--light) !important;
+    font-weight: 600;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.nav-link {
+    color: var(--light) !important;
+    transition: color 0.3s ease;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.nav-link:hover {
+    color: var(--primary) !important;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    background: var(--dark) !important;
 }
 
-button {
-    background-color: #007bff;
-    color: #fff;
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--light);
+    color: var(--dark);
+    border-color: var(--light);
+    transition: transform 0.6s ease-in-out;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--light);
+    color: var(--dark);
+    border-color: var(--light);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero {
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+    url('./images/pexels-thirdman-5327647.jpg') center/cover no-repeat;
+    padding-top: 80px;
+}
+
+.card {
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: var(--light);
 }
 
-a {
-    color: #007bff;
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .text-primary {
+    color: var(--primary) !important;
+}
+
+.modal-content {
+    background-color: var(--light);
+}
+
+.modal-header {
+    background-color: var(--secondary);
+    color: var(--light);
+}
+
+.form-label {
+    color: var(--dark);
+}
+
+.form-control:focus, 
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25);
+}
+
+#services {
+    background-color: var(--secondary);
+    color: var(--light);
+}
+
+#services .card {
+    background-color: var(--dark);
+}
+
+#services .text-muted {
+    color: var(--light) !important;
+    opacity: 0.8;
+}
+
+
+
+#testimonials .badge{
+    background-color: var(--primary);
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    background-color: var(--secondary);
+}
+
+footer a{
     text-decoration: none;
+    color: var(--light);
+}
+
+footer ul li{
+    margin-bottom: 0.5rem;
+}
+
+footer .links a:hover{
+    text-decoration: underline;
+}
+
+footer .social-links i:hover{
+    color: var(--secondary);
 }

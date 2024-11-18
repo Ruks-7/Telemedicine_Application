@@ -11,7 +11,7 @@ h1{
 
 form{
   margin: 25px auto;
-  max-width: 400px;
+  max-width: 500px;
   background-color: white;
   border-radius: 4px;
   padding: 20px 30px;
@@ -21,7 +21,7 @@ form{
 }
 
 input{
-  padding: 4px 8px;
+  padding: 4px 8px;                                           
 }
 
 
@@ -32,13 +32,6 @@ input{
 input[type="radio"], input[type="checkbox"]{
   accent-color: black;
 }
-
-.login input{
-  border-radius: 12px;
-  width: 75%;
-  margin-top: 4px;
-}
-
 
 .registration input,select, .login input{
   border-radius: 12px;
