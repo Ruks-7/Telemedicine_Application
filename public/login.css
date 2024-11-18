@@ -1,0 +1,94 @@
+/* auth.css */
+:root {
+    --primary: #ff5722;
+    --dark: #222831;
+    --secondary: #2d4059;
+    --light: #eeeeee;
+}
+
+body {
+    background-color: var(--dark);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+
+.fas{
+    color: var(--primary);
+}
+
+.card {
+    background-color: var(--light);
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 2.5rem;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    color: var(--light);
+    background-color: var(--dark);
+    border-color: var(--dark);
+    transform: translateY(-2px);
+}
+
+.form-control {
+    background-color: var(--light);
+    border: 2px solid var(--secondary);
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25);
+}
+
+.form-label {
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.6s ease forwards;
+}
