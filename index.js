@@ -20,11 +20,27 @@ app.use(session({
 app.use(express.static(path.join(__dirname,  'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'front_end', 'landing_page.html'));
+  try {
+    res.status(200).sendFile(path.join(__dirname, 'front_end', 'landing_page.html'));
+} catch (error) {
+    console.error('Error serving landing page:', error);
+    res.status(500).json({
+        success: false,
+        message: 'Error loading landing page'
+    });
+}
 });
 
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'front_end', 'login.html'));
+app.get('/patient', (req, res) => {
+    try {
+        res.status(200).sendFile(path.join(__dirname, 'front_end', 'login.html'));
+    } catch (error) {
+        console.error('Error serving login page:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error loading login page'
+        });
+    }
 });
 
 
