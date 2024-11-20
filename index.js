@@ -1,6 +1,5 @@
 // server.js
 const express = require('express');
-const db = require('./database');
 const session = require('express-session');
 const path = require('path');
 const app = express();
@@ -31,7 +30,7 @@ app.get('/', (req, res) => {
 }
 });
 
-app.get('/patient', (req, res) => {
+app.get('/patient-login', (req, res) => {
     try {
         res.status(200).sendFile(path.join(__dirname, 'front_end', 'login.html'));
     } catch (error) {
