@@ -1,0 +1,117 @@
+<!-- doctor_registration.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration - MyHealthCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="doctor_signUp.css">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <!-- Benefits Carousel - Hidden on small screens -->
+            <div class="col-md-5 benefits-section">
+                <div id="benefitsCarousel" class="carousel slide benefits-carousel" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#benefitsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#benefitsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#benefitsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    
+                    <div class="carousel-inner ">
+                        <div class="carousel-item active">
+                            <h3><i class="fas fa-user-md"></i> Join Our Network</h3>
+                            <p>Connect with patients across Africa and expand your practice through telemedicine.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h3><i class="fas fa-clock"></i> Flexible Hours</h3>
+                            <p>Set your own schedule and maintain work-life balance.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h3><i class="fas fa-chart-line"></i> Grow Your Practice</h3>
+                            <p>Access to a wider patient base and modern healthcare tools.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="col-md-7">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4">Doctor Registration</h2>
+                        <form id="doctorRegistrationForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" name="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="lastName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Medical License Number</label>
+                                    <input type="text" class="form-control" name="licenseNumber" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Specialty</label>
+                                    <select class="form-select" name="specialty" required>
+                                        <option value="">Select specialty</option>
+                                        <option>General Practice</option>
+                                        <option>Pediatrics</option>
+                                        <option>Cardiology</option>
+                                        <option>Dermatology</option>
+                                        <option>Psychiatry</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Years of Experience</label>
+                                    <input type="number" class="form-control" name="experience" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Consultation Fee</label>
+                                    <input type="number" class="form-control" name="fee" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" name="confirmPassword" required>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" required>
+                                        <label class="form-check-label">I agree to the Terms and Conditions</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">Register as Doctor</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    </script>
+</body>
+</html>

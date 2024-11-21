@@ -1,0 +1,180 @@
+/* public/css/dashboard.css */
+:root {
+    --primary: #ff5722;
+    --dark: #222831;
+    --secondary: #2d4059;
+    --light: #eeeeee;
+}
+
+body {
+    background-color: var(--light);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--dark);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar-brand i {
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+a{
+    color: var(--light);
+}
+
+.nav-link, 
+.title {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--light);
+}
+
+.nav-link:hover,
+.title:hover {
+    color: var(--primary);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item i {
+    margin-right: 0.5rem;
+    color: var(--secondary);
+}
+
+.dropdown-item:hover {
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+/* Card Styling */
+.card {
+    transition: transform 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-bottom: 2px solid var(--light);
+    padding: 1rem 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Patient Info Card */
+.patient-info i {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Appointment Items */
+.appointment-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light);
+    transition: background-color 0.3s ease;
+}
+
+.appointment-item:hover {
+    background-color: rgba(255, 87, 34, 0.05);
+}
+
+.appointment-item:last-child {
+    border-bottom: none;
+}
+
+/* Medical History Items */
+.record-item {
+    padding: 1rem;
+    border-left: 3px solid var(--primary);
+    margin-bottom: 1rem;
+    background-color: rgba(255, 87, 34, 0.05);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .appointment-item,
+    .record-item {
+        padding: 0.75rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+footer{
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--light);
+}
+
+footer ul li{
+    margin-bottom: 0.5rem;
+}
+
+footer .links a:hover{
+    text-decoration: underline;
+}
+
+footer .social-links i:hover{
+    color: var(--secondary);
+}

@@ -6,9 +6,9 @@ function formValidation(){
   let lastName=document.getElementById('lname').value;
   let password=document.getElementById('password').value;
   let email=document.getElementById('email').value;
-  let gender = document.querySelector('input[name="gender"]:checked').value;
+  let gender = document.querySelector('gender').value;
   let confirmPassword=document.getElementById('confirm').value;
-  let date=document.getElementById('date').value; //Date of birth
+  let date=document.getElementById('date_of_birth').value; //Date of birth
   let terms=document.getElementById("terms").checked;
 
   //Validate the information
@@ -42,6 +42,45 @@ function formValidation(){
         gender: gender,
         password: password
   };
+
+try {
+      const response = fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            // Show success message
+            showConfirmation();
+            
+            // Redirect to dashboard after delay
+            setTimeout(() =>{
+              
+          }, 2000);
+      } else {
+          // Show error message
+          document.body.innerHTML += `
+              <div class="alert alert-danger">
+                  ${data.message}
+              </div>
+          `;
+          setTimeout(() => {
+              document.querySelector('.alert').remove();
+          }, 3000);
+      }
+  } 
+  catch (error) {
+      console.error('Registration error:', error);
+      document.body.innerHTML += `
+          <div class="alert alert-danger">
+              Registration failed. Please try again.
+          </div>
+      `;
+    }
+  }
     
   //Confirm form submission
     function showConfirmation(){
@@ -57,8 +96,6 @@ function formValidation(){
       setTimeout(function() {
         document.querySelector('.confirmation').remove();
       }, 3000);
-    }
 
   return valid;
-}
-
+};

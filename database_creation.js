@@ -1,10 +1,7 @@
 const express = require('express');
 const db = require('./database_connection');
 const app = express();
-const bcrypt = require('bcrypt');
-const dotenv = require('dotenv');
 
-dotenv.config();
 
 
 //Create users table
@@ -145,3 +142,5 @@ const PORT = process.env.PORT || 4500;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;

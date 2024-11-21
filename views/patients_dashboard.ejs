@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - MyHealthCare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="patients_dashboard.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="title" href="/">
+                <i class="fas fa-heartbeat"></i> MyHealthCare
+            </a>
+            <div class="navbar-nav ms-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle"></i> My Account
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row">
+            <!-- Patient Info Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-circle fa-4x mb-3" style="color: #ff5722;"></i>
+                        <h4><%= patientData[0].first_name %> <%= patientData[0].last_name %></h4>
+                        <p class="text-muted mb-2"><%= patientData[0].email %></p>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" style="background-color: #ff5722; border: none;">
+                                Book Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Appointments -->
+            <div class="col-md-8 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Upcoming Appointments</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="appointmentsList">
+                            <% patientData.forEach(appointment => { %>
+                                <div class="appointment-item">
+                                    <p><strong>Doctor:</strong> Dr. <%= appointment.doctor_first_name %> <%= appointment.doctor_last_name %></p>
+                                    <p><strong>Date:</strong> <%= appointment.appointment_date %></p>
+                                    <p><strong>Time:</strong> <%= appointment.appointment_time %></p>
+                                    <p><strong>Specialty:</strong> <%= appointment.provider_specialty %></p>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical History -->
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Medical History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="medicalHistory">
+                            <% patientData.forEach(record => { %>
+                                <div class="record-item">
+                                    <p><strong>Date:</strong> <%= record.appointment_date %></p>
+                                    <p><strong>Diagnosis:</strong> <%= record.diagnosis %></p>
+                                    <p><strong>Prescription:</strong> <%= record.prescription %></p>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-4"><i class="fas fa-heartbeat"></i> MyHealthCare</h5>
+                    <p class="mb-4">Providing quality healthcare services through innovative telemedicine solutions.</p>
+                    <div class="social-links">
+                        <a href="#" class=" me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class=" me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class=" me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class=" col-lg-4 col-md-6">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled links">
+                        <li><a href="#services"  >Our Services</a></li>
+                        <li><a href="#doctors">Find Doctors</a></li>
+                        <li><a href="#about" >About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +254 755 667 890</li>
+                        <li><i class="fas fa-envelope me-2"></i> contact@myhealthcare.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Healthcare Street, Medical City, MC 12345</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-top border-secondary pt-4 mt-4 text-center">
+                <p class="mb-0">&copy; 2024 MyHealthCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

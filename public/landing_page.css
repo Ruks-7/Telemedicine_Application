@@ -140,6 +140,11 @@ h4{
     background-color: var(--secondary);
 }
 
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
 footer a{
     text-decoration: none;
     color: var(--light);

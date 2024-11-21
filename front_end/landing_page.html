@@ -22,7 +22,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonies</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#doctors">Find Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/signup">Be a doctor</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 </ul>
                 <div class="d-flex">
@@ -53,205 +53,205 @@
 
     <!-- Medical Services Section -->
 <section id="services" class="py-5 bg-light">
-  <div class="container">
-      <h2 class="text-center mb-5">Our Services</h2>
-      <div class="row g-4">
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-heart fa-3x mb-3"></i>
-                      <h4>Cardiovascular Care</h4>
-                      <p>Management of hypertension, heart conditions, and preventive care</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-lungs fa-3x mb-3"></i>
-                      <h4>Respiratory Health</h4>
-                      <p>Treatment for asthma, respiratory infections, and breathing difficulties</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-brain fa-3x mb-3"></i>
-                      <h4>Mental Health</h4>
-                      <p>Support for anxiety, depression, and stress management</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-virus fa-3x mb-3"></i>
-                      <h4>Infectious Diseases</h4>
-                      <p>Treatment of malaria, typhoid, and other common infections</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-child fa-3x mb-3"></i>
-                      <h4>Pediatric Care</h4>
-                      <p>Specialized healthcare for children and adolescents</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body text-center p-4">
-                      <i class="fas fa-pills fa-3x mb-3"></i>
-                      <h4>Chronic Conditions</h4>
-                      <p>Management of diabetes, arthritis, and other long-term conditions</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-    <!-- Testimonials Section -->
-<section id="testimonials" class="py-5 bg-light">
-  <div class="container">
-      <h2 class="text-center mb-5">Patient Testimonials</h2>
-      <div class="row justify-content-center">
-          <div class="col-lg-8">
-              <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                      <!-- Kenya Testimonial -->
-                      <div class="carousel-item active">
-                          <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
-                              <div class="country-badge mb-3">
-                                  <span class="badge">Kenya</span>
-                              </div>
-                              <p class="lead mb-3">"MyHealthCare has made healthcare accessible even in remote areas. The doctors are professional and understanding!"</p>
-                              <h5 class="mb-1">Grace Kimani</h5>
-                              <p class="text-muted">Nairobi, Kenya</p>
-                          </div>
-                      </div>
-
-                      <!-- Uganda Testimonial -->
-                      <div class="carousel-item">
-                          <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
-                              <div class="country-badge mb-3">
-                                  <span class="badge">Uganda</span>
-                              </div>
-                              <p class="lead mb-3">"The online consultation feature saved me long travel hours to the city. Great initiative for healthcare!"</p>
-                              <h5 class="mb-1">John Mukasa</h5>
-                              <p class="text-muted">Kampala, Uganda</p>
-                          </div>
-                      </div>
-
-                      <!-- Tanzania Testimonial -->
-                      <div class="carousel-item">
-                          <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
-                              <div class="country-badge mb-3">
-                                  <span class="badge">Tanzania</span>
-                              </div>
-                              <p class="lead mb-3">"Accessing quality healthcare has never been easier. The platform is user-friendly and the doctors are excellent!"</p>
-                              <h5 class="mb-1">Sarah Mwajuma</h5>
-                              <p class="text-muted">Dar es Salaam, Tanzania</p>
-                          </div>
-                      </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                      <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                  </button>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-    <!-- Appointment Modal -->
-    <div class="modal fade" id="appointmentModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Book an Appointment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="container">
+        <h2 class="text-center mb-5">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-heart fa-3x mb-3"></i>
+                        <h4>Cardiovascular Care</h4>
+                        <p>Management of hypertension, heart conditions, and preventive care</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="appointmentForm">
-                        <div class="mb-3">
-                            <label class="form-label">Select Doctor</label>
-                            <select class="form-select" required>
-                                <option value="">Choose a doctor</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Appointment Date</label>
-                            <input type="date" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Time Slot</label>
-                            <select class="form-select" required>
-                                <option value="">Select time</option>
-                            </select>
-                        </div>
-                    </form>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-lungs fa-3x mb-3"></i>
+                        <h4>Respiratory Health</h4>
+                        <p>Treatment for asthma, respiratory infections, and breathing difficulties</p>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Book Now</button>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-brain fa-3x mb-3"></i>
+                        <h4>Mental Health</h4>
+                        <p>Support for anxiety, depression, and stress management</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-virus fa-3x mb-3"></i>
+                        <h4>Infectious Diseases</h4>
+                        <p>Treatment of malaria, typhoid, and other common infections</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-child fa-3x mb-3"></i>
+                        <h4>Pediatric Care</h4>
+                        <p>Specialized healthcare for children and adolescents</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-pills fa-3x mb-3"></i>
+                        <h4>Chronic Conditions</h4>
+                        <p>Management of diabetes, arthritis, and other long-term conditions</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    </section>
+
+        <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Patient Testimonials</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Kenya Testimonial -->
+                        <div class="carousel-item active">
+                            <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
+                                <div class="country-badge mb-3">
+                                    <span class="badge">Kenya</span>
+                                </div>
+                                <p class="lead mb-3">"MyHealthCare has made healthcare accessible even in remote areas. The doctors are professional and understanding!"</p>
+                                <h5 class="mb-1">Grace Kimani</h5>
+                                <p class="text-muted">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+
+                        <!-- Uganda Testimonial -->
+                        <div class="carousel-item">
+                            <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
+                                <div class="country-badge mb-3">
+                                    <span class="badge">Uganda</span>
+                                </div>
+                                <p class="lead mb-3">"The online consultation feature saved me long travel hours to the city. Great initiative for healthcare!"</p>
+                                <h5 class="mb-1">John Mukasa</h5>
+                                <p class="text-muted">Kampala, Uganda</p>
+                            </div>
+                        </div>
+
+                        <!-- Tanzania Testimonial -->
+                        <div class="carousel-item">
+                            <div class="testimonial-card text-center p-4 bg-white shadow-sm rounded">
+                                <div class="country-badge mb-3">
+                                    <span class="badge">Tanzania</span>
+                                </div>
+                                <p class="lead mb-3">"Accessing quality healthcare has never been easier. The platform is user-friendly and the doctors are excellent!"</p>
+                                <h5 class="mb-1">Sarah Mwajuma</h5>
+                                <p class="text-muted">Dar es Salaam, Tanzania</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+        <!-- Appointment Modal -->
+        <div class="modal fade" id="appointmentModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Book an Appointment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="appointmentForm">
+                            <div class="mb-3">
+                                <label class="form-label">Select Doctor</label>
+                                <select class="form-select" required>
+                                    <option value="">Choose a doctor</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Appointment Date</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Time Slot</label>
+                                <select class="form-select" required>
+                                    <option value="">Select time</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-<footer class="footer bg-dark text-light py-5 mt-5">
-  <div class="container">
-      <div class="row g-4">
-          <!-- Company Info -->
-          <div class="col-lg-4 col-md-6">
-              <h5 class="mb-4"><i class="fas fa-heartbeat"></i> MyHealthCare</h5>
-              <p class="mb-4">Providing quality healthcare services through innovative telemedicine solutions.</p>
-              <div class="social-links">
-                  <a href="#" class=" me-3"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#" class=" me-3"><i class="fab fa-twitter"></i></a>
-                  <a href="#" class=" me-3"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-          </div>
-          
-          <!-- Quick Links -->
-          <div class=" col-lg-4 col-md-6">
-              <h5 class="mb-4">Quick Links</h5>
-              <ul class="list-unstyled links">
-                  <li><a href="#services"  >Our Services</a></li>
-                  <li><a href="#doctors">Find Doctors</a></li>
-                  <li><a href="#about" >About Us</a></li>
-                  <li><a href="/privacy">Privacy Policy</a></li>
-                  <li><a href="/terms">Terms of Service</a></li>
-              </ul>
-          </div>
+    <footer class="footer py-5 mt-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Company Info -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="mb-4"><i class="fas fa-heartbeat"></i> MyHealthCare</h5>
+                <p class="mb-4">Providing quality healthcare services through innovative telemedicine solutions.</p>
+                <div class="social-links">
+                    <a href="#" class=" me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class=" me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class=" me-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class=" col-lg-4 col-md-6">
+                <h5 class="mb-4">Quick Links</h5>
+                <ul class="list-unstyled links">
+                    <li><a href="#services"  >Our Services</a></li>
+                    <li><a href="#doctors">Find Doctors</a></li>
+                    <li><a href="#about" >About Us</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
 
-          <!-- Contact Info -->
-          <div class="col-lg-4 col-md-6">
-              <h5 class="mb-4">Contact Us</h5>
-              <ul class="list-unstyled">
-                  <li><i class="fas fa-phone me-2"></i> +254 755 667 890</li>
-                  <li><i class="fas fa-envelope me-2"></i> contact@myhealthcare.com</li>
-                  <li><i class="fas fa-map-marker-alt me-2"></i> 123 Healthcare Street, Medical City, MC 12345</li>
-              </ul>
-          </div>
-      </div>
+            <!-- Contact Info -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="mb-4">Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-phone me-2"></i> +254 755 667 890</li>
+                    <li><i class="fas fa-envelope me-2"></i> contact@myhealthcare.com</li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i> 123 Healthcare Street, Medical City, MC 12345</li>
+                </ul>
+            </div>
+        </div>
 
-      <!-- Copyright -->
-      <div class="border-top border-secondary pt-4 mt-4 text-center">
-          <p class="mb-0">&copy; 2024 MyHealthCare. All rights reserved.</p>
-      </div>
-  </div>
+        <!-- Copyright -->
+        <div class="border-top border-secondary pt-4 mt-4 text-center">
+            <p class="mb-0">&copy; 2024 MyHealthCare. All rights reserved.</p>
+        </div>
+    </div>
 </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

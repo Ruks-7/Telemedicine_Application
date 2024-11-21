@@ -1,0 +1,46 @@
+:root {
+            --primary: #ff5722;
+            --dark: #222831;
+            --secondary: #2d4059;
+            --light: #eeeeee;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));;
+        }
+
+        .benefits-carousel {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .carousel-item p {
+            padding: 3rem 2rem;
+        }
+
+        .fas{
+            color: var(--primary);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #e64a19;
+            border-color: #e64a19;
+        }
+
+        @media (max-width: 768px) {
+            .benefits-section {
+                display: none;
+            }
+        }
