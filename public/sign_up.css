@@ -1,5 +1,5 @@
 :root {
-  --primary: #ff5722;
+  --primary: #ff5722; 
   --dark: #222831;
   --secondary: #2d4059;
   --light: #eeeeee;
@@ -109,12 +109,8 @@ a:hover {
   border-bottom: none;
 }
 
-#password, #confirmpassword,#terms{
+#errorElement{
   color: var(--dark) ;
-}
-
-#confirmation{
-  color: var(--primary);
 }
 
 /* Responsive adjustments */

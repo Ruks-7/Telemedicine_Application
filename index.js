@@ -1,8 +1,10 @@
 const express = require('express');
 const mysql = require('mysql2');
+const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const session = require('express-session');
 const path = require('path');
+
 const app = express();
 
 dotenv.config();
@@ -37,6 +39,9 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 //Public folder
 app.use(express.static(path.join(__dirname,  'public')));
@@ -55,7 +60,7 @@ app.get('/', (req, res) => {
 }
 });
 
-app.get('/signup', (req, res) => {
+app.get('/doctor/signup', (req, res) => {
   try {
     res.status(200).sendFile(path.join(__dirname, 'front_end', 'doctor_signUp.html'));
 } catch (error) {
@@ -67,7 +72,7 @@ app.get('/signup', (req, res) => {
 }
 });
 
-app.get('/register', (req, res) => {
+app.get('/patient/register', (req, res) => {
   try {
     res.status(200).sendFile(path.join(__dirname, 'front_end', 'sign_up.html'));
 } catch (error) {
@@ -79,7 +84,7 @@ app.get('/register', (req, res) => {
 }
 });
 
-app.get('/patient-login', (req, res) => {
+app.get('/patient/login', (req, res) => {
     try {
         res.status(200).sendFile(path.join(__dirname, 'front_end', 'login.html'));
     } catch (error) {
@@ -92,12 +97,12 @@ app.get('/patient-login', (req, res) => {
 });
 
 
-//Register a patient
+//Receive data from the form
 app.post('/register', async (req, res) => {
-  const { fname, lname, date, email, password, gender } = req.body;
+  const { fname, lname, email, gender, date, password } = req.body;
 
-  // Validate form data
-  if (!fname || !lname || !date || !email || !password) {
+// Validate form data
+if (!fname || !lname || !date || !email || !password || !gender) {
       return res.status(400).json({
           success: false,
           message: 'All fields are required'
@@ -108,7 +113,7 @@ app.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
       
       // First create user record
-      const createUserQuery = `INSERT INTO users (email_address, password_encrypted, role) VALUES (?, ?, 'patient')`;
+      const createUserQuery = `INSERT INTO users (email_address, password_encrypted) VALUES (?, ?)`;
       db.query(createUserQuery, [email, hashedPassword], (error, userResults) => {
           if (error) {
               console.error('Error creating user:', error);
@@ -124,12 +129,14 @@ app.post('/register', async (req, res) => {
                   first_name, 
                   last_name, 
                   date_of_birth, 
+                  email_address,
+                  password_encrypted,
                   gender,
                   user_id
-              ) VALUES (?, ?, ?, ?, ?)
+              ) VALUES (?, ?, ?, ?, ?, ?, ?)
           `;
           
-          const patientValues = [fname, lname, date, gender, userResults.insertId];
+          const patientValues = [fname, lname, date, email, hashedPassword, gender, userResults.insertId];
           
           db.query(createPatientQuery, patientValues, (error, patientResults) => {
               if (error) {

@@ -27,24 +27,28 @@
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <label class="form-label">First Name</label>
-                                    <input type="text" id="fname" class="form-control" required>
+                                    <input type="text" id="fname" class="form-control">
+                                    <span id="fnameError"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Last Name</label>
-                                    <input type="text" id="lname" class="form-control" required>
+                                    <input type="text" id="lname" class="form-control">
+                                    <span id="lnameError"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Date of Birth</label>
-                                    <input type="date" id="date_of_birth" class="form-control" required>
+                                    <input type="date" id="date_of_birth" class="form-control">
+                                    <span id="dateError"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Gender</label>
-                                    <select class="form-select" name="gender" required>
-                                        <option>Select gender</option>
+                                    <select class="form-select" name="gender">
+                                        <option value="">Select gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Other">Other</option>
                                     </select>
+                                    <span id="genderError"></span>
                                 </div>
                             </div>
 
@@ -53,11 +57,13 @@
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <label class="form-label">Email Address</label>
-                                    <input type="email" id="email" class="form-control" required>
+                                    <input type="email" id="email" class="form-control">
+                                    <span id="emailError"></span>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label class="form-label">Phone Number</label>
-                                    <input type="tel" id="telephone" class="form-control">
+                                    <input type="tel" id="telephone" placeholder="Optional" class="form-control">
                                 </div>
                             </div>
 
@@ -89,16 +95,14 @@
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <label class="form-label">Password</label>
-                                    <input type="password" id="password" class="form-control" required>
-                                    <br />
+                                    <input type="password" id="password" class="form-control">
                                     <span id="passwordError"></span>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">Confirm Password</label>
-                                    <input type="password" id="confirm" class="form-control" required>
-                                    <br />
-                                    <span id="confirmPassword"></span>
+                                    <input type="password" id="confirm" class="form-control">
+                                    <span id="confirmError"></span>
                                 </div>
                                 
                             </div>
@@ -108,6 +112,7 @@
                                 <label class="form-check-label">
                                     I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                                 </label>
+                                <br />
                                 <span id="termsError"></span>
                             </div>
 
@@ -127,6 +132,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
