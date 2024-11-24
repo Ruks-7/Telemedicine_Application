@@ -7,7 +7,7 @@
     <title>Doctor Registration - MyHealthCare</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="doctor_signUp.css">
+    <link rel="stylesheet" href="doctorSignup.css">
 </head>
 <body>
     <div class="container py-5">
@@ -44,11 +44,14 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4">Doctor Registration</h2>
-                        <form id="doctorRegistrationForm">
+                        <form id="doctorRegistrationForm" action="/doctor/signup" onsubmit="dataValidation()">
                             <div class="row g-3">
                                 <div class="col-md-6">
+
+                                    
                                     <label class="form-label">First Name</label>
                                     <input type="text" class="form-control" name="firstName" required>
+                                
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Last Name</label>
