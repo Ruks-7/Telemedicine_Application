@@ -8,9 +8,10 @@ const app = express();
 
     // Middleware
     app.use(express.json());
-    app.use(express.static(path.join(__dirname,  'public')));
-    app.use('/auth', routes);
     app.use(express.urlencoded({ extended: true }));
+    app.use(express.static(path.join(__dirname,  'public')));
+
+    
     app.use(session({
         secret: 'your-secret-key',
         resave: false,
@@ -18,6 +19,7 @@ const app = express();
         cookie: { secure: process.env.NODE_ENV === 'production' }
     }));
 
+    app.use('/auth', routes);
     
   // Set view engine to EJS
     app.set('view engine', 'ejs');
@@ -60,7 +62,7 @@ const app = express();
     }
     });
 
-    app.get('/patient/login', (req, res) => {
+    app.get('/login', (req, res) => {
         try {
             res.status(200).sendFile(path.join(__dirname, 'front_end', 'login.html'));
         } catch (error) {
@@ -71,6 +73,7 @@ const app = express();
             });
         }
     });
+
 
 
 

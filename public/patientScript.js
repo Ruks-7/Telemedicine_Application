@@ -73,35 +73,6 @@ document.getElementById('signupForm').addEventListener('submit',async function (
 return valid;
 });
 
-//Login a user
-document.getElementById('loginForm').addEventListener('submit',async function (e) {
-    let valid = true;
-    clearErrors(); // Clear previous errors
-
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-
-    if (!email) {
-        showError('emailError', 'Email is required');
-        valid = false;
-    }
-
-    if (!password) {
-        showError('passwordError', 'Password is required');
-        valid = false;
-    }
-
-    if (valid) {
-        const formData = {
-            email: email,
-            password: password
-        };
-        await loginForm(formData);
-    }
-    return valid;
-});
-    
-
 
 function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
@@ -113,7 +84,7 @@ function showError(elementId, message) {
 }
 
 function clearErrors() {
-    const errorElements = document.querySelectorAll('[id$="Error"]');
+    const errorElements = document.querySelectorAll("span");
     errorElements.forEach(element => element.innerHTML = '');
 }
 
@@ -153,37 +124,6 @@ async function submitForm(formData) {
     }
 }
 
-// Login form data
-async function loginForm(formData) {
-    try {
-        const response = await fetch('/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            // Show success message
-            showSuccessMessage(data.message);
-
-            // Redirect after delay
-            setTimeout(() => {
-                window.location.href = '/dashboard';
-            }, 2000);
-        }
-        else {
-            showErrorMessage(data.message);
-        }
-    } 
-    catch (error) {
-        console.error('Login error:', error);
-        showErrorMessage('An error occurred. Please try again later');
-    }
-}
 
 // Show success message
 function showSuccessMessage(message) {
@@ -201,7 +141,7 @@ function showSuccessMessage(message) {
 function showErrorMessage(message) {
     const alert = document.createElement('div');    
     alert.className = 'alert alert-danger';
-    alert.innerHTML = ` ${message}`;
+    alert.innerHTML = `${message}`;
     document.body.appendChild(alert);
 
     setTimeout(() => {

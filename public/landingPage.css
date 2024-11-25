@@ -31,6 +31,12 @@ h4{
     font-weight: 600;
 }
 
+.hamburger {
+    border-color: var(--light);
+    background-color: var(--light);
+    opacity: 0.6;
+}
+
 .nav-link {
     color: var(--light);
     transition: color 0.3s ease;
