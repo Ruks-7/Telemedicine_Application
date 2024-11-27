@@ -23,7 +23,7 @@ const registerUser = async (req, res) => {
 
         // Create user record
         const createUserQuery = `INSERT INTO users (email_address, password_encrypted) VALUES (?, ?)`;
-        const  userResults = await db.query(createUserQuery, [email, hashedPassword]);
+        const  [userResults] = await db.query(createUserQuery, [email, hashedPassword]);
 
         // Create patient record with user_id
                 const createPatientQuery = `

@@ -64,6 +64,19 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     }
     });
 
+    app.get('/provider-login', (req, res) => {
+        try {
+        res.status(200).sendFile(path.join(__dirname, 'front_end', 'doctorLogin.html'));
+        }
+        catch (error) {
+        console.error('Error serving login page for doctors:', error);
+        res.status(500).send({
+            success: false,
+            message: 'Error loading login page for doctors'
+        }); 
+        }
+    });
+
     app.get('/register', (req, res) => {
         try {
         res.status(200).sendFile(path.join(__dirname, 'front_end', 'signUp.html'));

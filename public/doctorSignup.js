@@ -137,7 +137,7 @@ function showSuccessMessage(message) {
     const alert = document.createElement('div');
     alert.className = 'alert alert-success';
     alert.innerHTML = `${message}`;
-    document.body.appendChild(alert);
+    document.getElementsByClassName('container')[0].appendChild(alert);
 
     setTimeout(() => {
         alert.remove();
@@ -149,7 +149,7 @@ function showErrorMessage(message) {
     const alert = document.createElement('div');    
     alert.className = 'alert alert-danger';
     alert.innerHTML = `${message}`;
-    document.body.appendChild(alert);
+    document.getElementsByClassName('container')[0].appendChild(alert);
 
     setTimeout(() => {
         alert.remove();

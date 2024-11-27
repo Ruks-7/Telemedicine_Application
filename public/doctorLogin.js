@@ -53,7 +53,7 @@ function isValidEmail(email) {
 // Login form data
 async function loginForm(formData) {
     try {
-        const response = await fetch('/auth/login', {
+        const response = await fetch('/auth/provider-login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ function showSuccessMessage(message) {
 function showErrorMessage(message) {
     const alert = document.createElement('div');    
     alert.className = 'alert alert-danger';
-    alert.innerHTML = ` ${message}`;
+    alert.innerHTML = `${message}`;
     document.getElementsByClassName('container')[0].appendChild(alert);
 
     setTimeout(() => {
