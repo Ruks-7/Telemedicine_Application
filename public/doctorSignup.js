@@ -1,20 +1,21 @@
-//Sign up a user
-document.getElementById('signupForm').addEventListener('submit',async function (e) {
-    
+document.getElementById('doctorRegistrationForm').addEventListener('submit', async function (e) {
+
     e.preventDefault();
+    
     let valid = true;
     clearErrors(); // Clear previous errors
 
-    // Get all form inputs
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
-    const password = document.getElementById('password').value;
     const email = document.getElementById('email').value;
-    const confirmPassword = document.getElementById('confirm').value;
     const date = document.getElementById('date_of_birth').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const licenseNumber = document.getElementById('licenseNumber').value;
+    const speciality = document.querySelector('select[name="speciality"]').value;
     const terms = document.getElementById("terms").checked;
-    const gender = document.querySelector('select[name="gender"]').value;
 
+    
     // Validation rules
     if (!firstName) {
         showError('fnameError', 'First name is required');
@@ -39,11 +40,6 @@ document.getElementById('signupForm').addEventListener('submit',async function (
         valid = false;
     }
 
-    if (!gender) {
-        showError('genderError', 'Please select your gender');
-        valid = false;
-    }
-
     if (password.length < 8) {
         showError('passwordError', 'Password must be at least 8 characters');
         valid = false;
@@ -59,20 +55,31 @@ document.getElementById('signupForm').addEventListener('submit',async function (
         valid = false;
     }
 
-    if (valid) {
+    if(!licenseNumber){
+        showError('licenseError', 'License number is required');
+        valid = false;
+    }
+
+    if(!speciality){
+        showError('specialityError', 'Speciality is required');
+        valid = false;
+    }
+
+    if(valid){
         const formData = {
             fname: firstName,
             lname: lastName,
             email: email,
-            gender: gender,
             date: date,
-            password: password
+            password: password,
+            license: licenseNumber,
+            speciality: speciality
         };
+
         await submitForm(formData);
-}
+    }
 return valid;
 });
-
 
 function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
@@ -95,7 +102,7 @@ function isValidEmail(email) {
 // Submit form data
 async function submitForm(formData) {
     try {
-        const response =await fetch('/auth/register', {
+        const response =await fetch('/auth/provider-signUp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -130,7 +137,7 @@ function showSuccessMessage(message) {
     const alert = document.createElement('div');
     alert.className = 'alert alert-success';
     alert.innerHTML = `${message}`;
-    document.
+    document.body.appendChild(alert);
 
     setTimeout(() => {
         alert.remove();
@@ -148,4 +155,6 @@ function showErrorMessage(message) {
         alert.remove();
     }, 5000);
 }
+
+    
 

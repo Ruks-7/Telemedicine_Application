@@ -83,6 +83,8 @@ const providers =
 
 });
 
+
+
 //Create appointments table
 app.get('/appointments', (req,res) => {
 const appointments = 

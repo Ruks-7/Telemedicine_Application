@@ -38,6 +38,10 @@ a{
     color: var(--light);
 }
 
+.title .fas{
+    color: var(--primary);
+}
+
 .nav-link:hover,
 .title:hover {
     color: var(--primary);
@@ -61,6 +65,10 @@ a{
 .dropdown-item:hover {
     background-color: var(--light);
     color: var(--primary);
+}
+
+h4{
+    font-weight: bold;
 }
 
 /* Card Styling */
@@ -121,7 +129,8 @@ a{
 }
 
 .btn-primary:hover {
-    background-color: #e64a19;
+    background-color: var(--light);
+    color: var(--dark);
     transform: translateY(-2px);
 }
 

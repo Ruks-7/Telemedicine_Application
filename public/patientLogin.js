@@ -4,8 +4,8 @@ document.getElementById('loginForm').addEventListener('submit',async function (e
     let valid = true;
     clearErrors(); // Clear previous errors
 
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     if (!email) {
         showError('emailError', 'Email is required');
@@ -68,6 +68,9 @@ async function loginForm(formData) {
             // Show success message
             showSuccessMessage(data.message);
 
+            setTimeout(() => {  
+                window.location.href = data.redirect;
+            }, 2000);
         }
         else {
             showErrorMessage(data.message);

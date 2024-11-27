@@ -1,6 +1,7 @@
 //Patient registration and login controller
 const bcrypt = require('bcrypt');
 const db = require('../config/db');
+const ejs = require('ejs');
 
 
 //Register a new user
@@ -56,13 +57,13 @@ const registerUser = async (req, res) => {
 
         return res.status(201).json({ 
             message: 'User registered successfully!',
-            redirect: '/dashboard'
+            redirect: '/auth/dashboard'
             });
         });
     }
     catch(error) {
         console.log(error);
-        return es.status(500).json({ message: 'An error occured!', error });
+        return res.status(500).json({ message: 'An error occured!', error });
     }
 };
 
@@ -88,13 +89,28 @@ const loginUser = async (req, res) => {
 
         // Create session
         console.log(req.session);
-        req.session.userId = user.id;
+        req.session.userId = user.user_id;
         req.session.role = 'patient';
+
+
+        // Fetch patient ID based on user ID
+        const patientQuery = 'SELECT * FROM patients WHERE user_id = ?';
+        const [patientCheck] = await db.query(patientQuery, [user.user_id]);
+        console.log(patientCheck);
+        if (patientCheck.length > 0) {
+            req.session.patientId = patientCheck[0].patient_id; // Set patient ID
+        }
+
+        console.log('User ID:', req.session.userId);
+    console.log('Patient ID:', req.session.patientId);
+
+    console.log(req.session);
 
         return res.status(200).json({
             message: 'User logged in successfully!',
-            redirect: ('/dashboard')
+            redirect: '/auth/dashboard'
         });
+        
     }
     else{
         return res.status(400).json({message: 'User does not exist!'});
@@ -108,9 +124,11 @@ const loginUser = async (req, res) => {
 
 //Dashboard
 const patientDashboard = async (req, res) => {
+    
+    console.log(req.session);
     // Check if user is logged in
     if (!req.session.userId || !req.session.patientId) {
-        return res.redirect('/login');
+        return res.redirect('/auth/login');
     }
 
     try {
@@ -120,20 +138,21 @@ const patientDashboard = async (req, res) => {
                 p.*,
                 a.appointment_date,
                 a.appointment_time,
-                d.first_name as doctor_first_name,
-                d.last_name as doctor_last_name,
+                d.first_name as provider_first_name,
+                d.last_name as provider_last_name,
                 d.provider_specialty,
                 m.diagnosis,
                 m.prescription,
                 m.notes
             FROM patients p
             LEFT JOIN appointments a ON p.patient_id = a.patient_id
-            LEFT JOIN doctors d ON a.doctor_id = d.doctor_id
+            LEFT JOIN providers d ON a.provider_id = d.provider_id
             LEFT JOIN medical_records m ON p.patient_id = m.patient_id
             WHERE p.patient_id = ?
             ORDER BY a.appointment_date DESC`;
 
-        const [patientData] = await db.promise().query(query, [req.session.patientId]);
+        const [patientData] = await db.query(query, [req.session.patientId]);
+        console.log(patientData);
 
         // Group medical records
         const medicalRecords = patientData.filter(record => record.diagnosis);
@@ -141,13 +160,8 @@ const patientDashboard = async (req, res) => {
         // Group appointments
         const appointments = patientData.filter(record => record.appointment_date);
 
-        res.render('patients_dashboard', {
-            user: {
-                name: `${patientData[0].first_name} ${patientData[0].last_name}`,
-                email: patientData[0].email_address
-            },
-            patientData: appointments,
-            medicalRecords: medicalRecords,
+        res.render('patientsDashboard.ejs', {
+            patientData, medicalRecords, appointments,
             isLoggedIn: true
         });
 
@@ -161,10 +175,14 @@ const patientDashboard = async (req, res) => {
 
 // Add authentication middleware
 function isAuthenticated(req, res, next) {
+
+    console.log('User_ID:', req.session.userId);
+    console.log('Patient_ID:', req.session.patientId);
+    console.log(req.session);
     if (req.session.userId && req.session.patientId) {
         return next();
     }
-    res.redirect('/login');
+    res.redirect('/auth/login');
 }
 
 

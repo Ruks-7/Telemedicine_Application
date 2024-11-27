@@ -84,7 +84,7 @@ a {
 }
 
 a:hover {
-  color: #e64a19;
+  text-decoration: underline;
 }
 
 .card {
@@ -116,10 +116,6 @@ a:hover {
 
 .form-section:last-child {
   border-bottom: none;
-}
-
-#errorElement{
-  color: var(--dark) ;
 }
 
 /* Responsive adjustments */
