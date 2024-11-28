@@ -11,6 +11,10 @@ body {
     background-color: var(--light);
 }
 
+h1{
+    margin-bottom: 30px;
+}
+
 h2{
     color: var(--dark);
     font-weight: bold;

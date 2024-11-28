@@ -94,12 +94,8 @@ h4{
 /* Patient Info Card */
 .patient-info i {
     font-size: 4rem;
-    color: var(--primary);
+    color: var(--dark);
     margin-bottom: 1rem;
-}
-
-footer .fas{
-    color: var(--primary)
 }
 
 /* Appointment Items */
@@ -191,4 +187,38 @@ footer .links a:hover{
 
 footer .social-links i:hover{
     color: var(--secondary);
+}
+
+footer .fas{
+    color: var(--primary)
+}
+
+/* Modal styling */
+.modal {
+    z-index: 1050;
+}
+
+.modal-backdrop {
+    z-index: 1040;
+}
+
+.modal-dialog {
+    margin: 1.75rem auto;
+    max-width: 500px;
+}
+
+.modal.fade .modal-dialog {
+    transform: translate(0, -50px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }

@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser, isAuthenticated, patientDashboard, logout } = require('../controllers/patientController');
+const { registerUser, loginUser, isAuthenticated, patientDashboard,logout } = require('../controllers/patientController');
 const {registerProvider, loginProvider,doctorDashboard, Authenticated} = require('../controllers/doctorController'); 
 const router = express.Router();
 

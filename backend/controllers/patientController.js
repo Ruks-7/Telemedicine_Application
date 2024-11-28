@@ -100,12 +100,7 @@ const loginUser = async (req, res) => {
         if (patientCheck.length > 0) {
             req.session.patientId = patientCheck[0].patient_id; // Set patient ID
         }
-
-        console.log('User ID:', req.session.userId);
-    console.log('Patient ID:', req.session.patientId);
-
-    console.log(req.session);
-
+        
         return res.status(200).json({
             message: 'User logged in successfully!',
             redirect: '/auth/dashboard'
@@ -154,6 +149,10 @@ const patientDashboard = async (req, res) => {
         const [patientData] = await db.query(query, [req.session.patientId]);
         console.log(patientData);
 
+        //Get doctors
+        const doctorQuery = 'SELECT * FROM providers';
+        const [doctors] = await db.query(doctorQuery);
+
         // Group medical records
         const medicalRecords = patientData.filter(record => record.diagnosis);
         
@@ -161,7 +160,7 @@ const patientDashboard = async (req, res) => {
         const appointments = patientData.filter(record => record.appointment_date);
 
         res.render('patientsDashboard.ejs', {
-            patientData, medicalRecords, appointments,
+            patientData, medicalRecords, appointments, doctors,
             isLoggedIn: true
         });
 
@@ -192,8 +191,6 @@ const logout = (req, res) => {
 // Add authentication middleware
 function isAuthenticated(req, res, next) {
 
-    console.log('User_ID:', req.session.userId);
-    console.log('Patient_ID:', req.session.patientId);
     console.log(req.session);
     if (req.session.userId && req.session.patientId) {
         return next();

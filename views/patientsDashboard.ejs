@@ -30,18 +30,93 @@
         </div>
     </nav>
 
+        <!-- Add this modal after the container div -->
+        <div class="modal fade" id="appointmentModal" data-bs-backdrop="static" tabindex="-1">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Book an Appointment</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="appointmentForm">
+                                                    <!-- Doctor Selection -->
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Select Doctor</label>
+                                                        <select class="form-select" name="doctor" required>
+                                                            <option value="">Choose a doctor</option>
+                                                            <% doctors.forEach(doctor => { %>
+                                                                <option value="<%= doctor.doctor_id %>">
+                                                                    Dr. <%= doctor.first_name %> <%= doctor.last_name %> 
+                                                                    (<%= doctor.provider_specialty %>)
+                                                                </option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+    
+                                                    <!-- Date & Time -->
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">Appointment Date</label>
+                                                            <input type="date" class="form-control" name="date" required 
+                                                                min="<%= new Date().toISOString().split('T')[0] %>">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">Preferred Time</label>
+                                                            <select class="form-select" name="time" required>
+                                                                <option value="">Select time</option>
+                                                                <option value="09:00">9:00 AM</option>
+                                                                <option value="10:00">10:00 AM</option>
+                                                                <option value="11:00">11:00 AM</option>
+                                                                <option value="14:00">2:00 PM</option>
+                                                                <option value="15:00">3:00 PM</option>
+                                                                <option value="16:00">4:00 PM</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+    
+                                                    <!-- Consultation Type -->
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Consultation Type</label>
+                                                        <select class="form-select" name="type" required>
+                                                            <option value="">Select type</option>
+                                                            <option value="video">Video Call</option>
+                                                            <option value="voice">Voice Call</option>
+                                                            <option value="chat">Chat</option>
+                                                        </select>
+                                                    </div>
+    
+                                                    <!-- Symptoms/Notes -->
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Symptoms/Notes</label>
+                                                        <textarea class="form-control" name="symptoms" rows="3"></textarea>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="bookAppointment()">Book Appointment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+        </div>
+
     <div class="container my-4">
         <div class="row">
             <!-- Patient Info Card -->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 patient-info">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body text-center">
                         <i class="fas fa-user-circle fa-4x mb-3"></i>
                         <h4><%= patientData[0].first_name %> <%= patientData[0].last_name %></h4>
-                        <p class="text-muted mb-2"><%= patientData[0].email %></p>
+                        <p class="mb-2"><%= patientData[0].email_address %></p>
                         <hr>
+
                         <div class="d-grid gap-2 appointment">
-                            <button class="btn btn-primary">
+
+
+                            <!-- Update the Book Appointment button to trigger modal -->
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">
                                 Book Appointment
                             </button>
                         </div>
