@@ -6,7 +6,6 @@ MyHealthCare is a comprehensive telemedicine platform enabling virtual healthcar
 ## Features
 - User Authentication (Patients & Doctors)
 - Appointment Scheduling System
-- Virtual Consultations
 - Medical Records Management
 - Responsive Dashboard Interfaces
 - Session Management
@@ -70,15 +69,14 @@ telemedicine-application/
 
 ## Features
 
-# Patient Features
+### Patient Features
 - User Authentication
 - Appointment Scheduling System
 - Medical history access
 - Profile management
 - Consultation scheduling
 
-
-# Doctor Features
+### Doctor Features
 - User Authentication
 - Appointment Scheduling System
 - Patient records access
