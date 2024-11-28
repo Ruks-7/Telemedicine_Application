@@ -129,12 +129,9 @@
     }
 
     .alert {
-    z-index: 1000;
-    position: sticky;
-    margin: auto;
-    top: 10px;
-    left: 50%;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); 
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
     }

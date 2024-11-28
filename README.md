@@ -59,10 +59,14 @@ telemedicine-application/
 │   │   └── auth.js
 │   └──databaseSchema
 ├── front_end/
-│   ├── css/
-│   └──js/ 
+│   └──html/ 
 ├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
 ├── views/
+│   ├── doctorDashboard/
+│   ├── patientDashboard/
 ├── index.js
 └── package.json
 ```

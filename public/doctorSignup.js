@@ -118,7 +118,7 @@ async function submitForm(formData) {
 
             // Redirect after delay
             setTimeout(() => {
-                window.location.href = '/auth/dashboard';
+                window.location.href = data.redirect;
             }, 2000);
         }
         else {
