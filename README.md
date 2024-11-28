@@ -31,6 +31,8 @@ MyHealthCare is a comprehensive telemedicine platform enabling virtual healthcar
 1. Clone the repository
 ```bash
 git clone https://github.com/Ruks-7/Telemedicine_Application.git
+cd telemedicine-application
+```
 
 2.Install dependencies
 ```bash
@@ -43,8 +45,10 @@ DB_USER=root
 DB_PASSWORD=password
 DB_NAME=myhealthcare
 SESSION_SECRET=secret
+```
 
 ## Project Structure
+```bash
 telemedicine-application/
 ├── backend/
 │   ├── config/
@@ -54,7 +58,7 @@ telemedicine-application/
 │   │   └── doctorController.js
 │   ├── routes/
 │   │   └── auth.js
-|   └──databaseSchema
+│   └──databaseSchema
 ├── front_end/
 │   ├── css/
 │   └──js/ 
@@ -62,6 +66,7 @@ telemedicine-application/
 ├── views/
 ├── index.js
 └── package.json
+```
 
 ## Features
 
