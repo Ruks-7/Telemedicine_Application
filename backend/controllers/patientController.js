@@ -173,6 +173,22 @@ const patientDashboard = async (req, res) => {
     }
 };
 
+//Logout
+const logout = (req, res) => {
+    req.session.destroy((error) => {
+        if (error) {
+            console.error('Error destroying session:', error);
+            return res.status(500).send({
+                success: false,
+                message: 'Logout failed!'
+            });
+        }
+
+        res.clearCookie('connect.sid');
+        res.redirect('/auth/login');
+    });
+};
+
 // Add authentication middleware
 function isAuthenticated(req, res, next) {
 
@@ -189,4 +205,4 @@ function isAuthenticated(req, res, next) {
 
 
 
-module.exports = { registerUser, loginUser, patientDashboard, isAuthenticated };
+module.exports = { registerUser, loginUser, patientDashboard, isAuthenticated, logout };

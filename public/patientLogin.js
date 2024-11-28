@@ -105,4 +105,3 @@ function showErrorMessage(message) {
         alert.remove();
     }, 5000);
 }
-
