@@ -166,7 +166,7 @@ const doctorDashboard = async (req, res) => {
             SELECT * FROM appointments
             WHERE provider_id = ? AND appointment_date > CURDATE()`;
 
-        const [upcomingAppointments] = await db.query(upcoming, [req.session.providerId]);
+        const [upcomingAppointments] = await db.query(upcoming, [req.session.providerId, ]);
 
 
          // Render the doctor dashboard

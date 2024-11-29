@@ -1,3 +1,5 @@
+//The tables were created at the beginning of the project.
+//If you experience "callback function errors", use try-catch blocks to handle the errors.
 const express = require('express');
 const db = require('./config/db');
 const app = express();
@@ -139,6 +141,33 @@ const medical_records =
 
 }); 
 
+//Add a new column (symptoms) to the  appointments table 
+//Run this only once
+app.get('/add-column', async (req, res) => {
+  const addColumn = `ALTER TABLE appointments ADD COLUMN symptoms TEXT`;
+
+  try {
+      await db.query(addColumn);
+      res.status(201).send('Column added successfully!');
+  } catch (error) {
+      console.error('Error adding column to appointments table:', error);
+      res.status(500).send('Error adding column');
+  }
+});
+
+//change the status column in the appointments table to default 'pending'
+//Run this only once
+app.get('/change-status', async (req, res) => {
+  const changeStatus = `ALTER TABLE appointments ALTER COLUMN status SET DEFAULT 'pending'`;
+
+  try {
+      await db.query(changeStatus);
+      res.status(201).send('Status column changed successfully!');
+  } catch (error) {
+      console.error('Error changing status column in appointments table:', error);
+      res.status(500).send('Error changing status column');
+  }
+});
 
 const PORT = process.env.PORT || 4500;
 app.listen(PORT, () => {

@@ -8,12 +8,11 @@ const ejs = require('ejs');
 const registerUser = async (req, res) => {
     //fetch data
     const { fname, lname, email, gender, date, password } = req.body;
-    console.log(req.body);
     try{
         //check if user exists
         const userQuery = 'SELECT * FROM users WHERE email_address = ?';
         const [userCheck] = await db.query(userQuery, [email] );
-        console.log(userCheck);
+
         if(userCheck.length > 0){
             return res.status(400).json({ message: 'User already exists!'});
         }
@@ -62,7 +61,6 @@ const registerUser = async (req, res) => {
         });
     }
     catch(error) {
-        console.log(error);
         return res.status(500).json({ message: 'An error occured!', error });
     }
 };
@@ -71,13 +69,11 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     //fetch data
     const { email, password } = req.body;
-    console.log(req.body);
 
     try{
         //check if user exists
         const userQuery = 'SELECT * FROM users WHERE email_address = ?';
         const [userCheck] = await db.query(userQuery, [email] );
-        console.log(userCheck);
         if(userCheck.length > 0){
             
         //check if password is correct
@@ -88,7 +84,6 @@ const loginUser = async (req, res) => {
         }
 
         // Create session
-        console.log(req.session);
         req.session.userId = user.user_id;
         req.session.role = 'patient';
 
@@ -96,11 +91,10 @@ const loginUser = async (req, res) => {
         // Fetch patient ID based on user ID
         const patientQuery = 'SELECT * FROM patients WHERE user_id = ?';
         const [patientCheck] = await db.query(patientQuery, [user.user_id]);
-        console.log(patientCheck);
         if (patientCheck.length > 0) {
             req.session.patientId = patientCheck[0].patient_id; // Set patient ID
         }
-        
+
         return res.status(200).json({
             message: 'User logged in successfully!',
             redirect: '/auth/dashboard'
@@ -112,7 +106,6 @@ const loginUser = async (req, res) => {
     }
     }
     catch(error) {
-        console.log(error);
         return res.status(500).json({ message: 'An error occured!'});
     }
 };
@@ -123,7 +116,7 @@ const patientDashboard = async (req, res) => {
     console.log(req.session);
     // Check if user is logged in
     if (!req.session.userId || !req.session.patientId) {
-        return res.redirect('/auth/login');
+        return res.redirect('/login');
     }
 
     try {
@@ -188,10 +181,51 @@ const logout = (req, res) => {
     });
 };
 
+//Book an appointment
+const bookAppointment = async (req, res) => {
+    // Check if user is logged in
+    if (!req.session.userId || !req.session.patientId) {
+        return res.redirect('/auth/login');
+    }
+
+    console.log(req.body);
+
+    console.log(req.session.patientId, req.session.userId);
+    // Fetch form data
+    const { provider, date, time, consultation_type, symptoms } = req.body;
+    
+    try {
+        // Create appointment
+        const createAppointmentQuery = `
+            INSERT INTO appointments (
+                patient_id,
+                provider_id,
+                appointment_date,
+                appointment_time,
+                consultation_type,
+                symptoms
+            ) VALUES (?, ?, ?, ?, ?, ?)
+        `;
+
+        await db.query(createAppointmentQuery, [req.session.patientId, provider, date, time, consultation_type, symptoms]); //Provider is the provider_id
+
+        res.status(201).send({
+            success: true,
+            message: 'Appointment booked successfully!',
+        });
+
+    } catch (error) {
+        console.error('Error booking appointment:', error);
+        res.status(500).send({
+            success: false,
+            message: 'Appointment booking failed!'
+        });
+    }
+};
+
 // Add authentication middleware
 function isAuthenticated(req, res, next) {
 
-    console.log(req.session);
     if (req.session.userId && req.session.patientId) {
         return next();
     }
@@ -202,4 +236,4 @@ function isAuthenticated(req, res, next) {
 
 
 
-module.exports = { registerUser, loginUser, patientDashboard, isAuthenticated, logout };
+module.exports = { registerUser, loginUser, patientDashboard, isAuthenticated, logout, bookAppointment };

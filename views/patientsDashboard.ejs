@@ -34,10 +34,6 @@
         <div class="modal fade" id="appointmentModal" data-bs-backdrop="static" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Book an Appointment</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
                                             <div class="modal-body">
                                                 <form id="appointmentForm">
                                                     <!-- Doctor Selection -->
@@ -46,7 +42,7 @@
                                                         <select class="form-select" name="doctor" required>
                                                             <option value="">Choose a doctor</option>
                                                             <% doctors.forEach(doctor => { %>
-                                                                <option value="<%= doctor.doctor_id %>">
+                                                                <option value="<%= doctor.provider_id %>">
                                                                     Dr. <%= doctor.first_name %> <%= doctor.last_name %> 
                                                                     (<%= doctor.provider_specialty %>)
                                                                 </option>
@@ -58,8 +54,7 @@
                                                     <div class="row mb-3">
                                                         <div class="col-md-6">
                                                             <label class="form-label">Appointment Date</label>
-                                                            <input type="date" class="form-control" name="date" required 
-                                                                min="<%= new Date().toISOString().split('T')[0] %>">
+                                                            <input type="date" id="date" class="form-control" name="date" required >
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label class="form-label">Preferred Time</label>
@@ -78,10 +73,10 @@
                                                     <!-- Consultation Type -->
                                                     <div class="mb-3">
                                                         <label class="form-label">Consultation Type</label>
-                                                        <select class="form-select" name="type" required>
+                                                        <select class="form-select" name="consultation_type" required>
                                                             <option value="">Select type</option>
-                                                            <option value="video">Video Call</option>
-                                                            <option value="voice">Voice Call</option>
+                                                            <option value="video call">Video Call</option>
+                                                            <option value="voice call">Voice Call</option>
                                                             <option value="chat">Chat</option>
                                                         </select>
                                                     </div>
@@ -89,14 +84,15 @@
                                                     <!-- Symptoms/Notes -->
                                                     <div class="mb-3">
                                                         <label class="form-label">Symptoms/Notes</label>
-                                                        <textarea class="form-control" name="symptoms" rows="3"></textarea>
+                                                        <textarea class="form-control" id="symptoms" name="symptoms" rows="3"></textarea>
                                                     </div>
-                                                </form>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="bookAppointment()">Book Appointment</button>
+                                                <button type="submit" class="btn btn-primary">Book Appointment</button>
                                             </div>
+                                        </form>
                                         </div>
                                     </div>
         </div>
@@ -113,7 +109,6 @@
                         <hr>
 
                         <div class="d-grid gap-2 appointment">
-
 
                             <!-- Update the Book Appointment button to trigger modal -->
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointmentModal">
@@ -134,7 +129,8 @@
                         <div id="appointmentsList">
                             <% patientData.forEach(appointment => { %>
                                 <div class="appointment-item">
-                                    <p><strong>Doctor:</strong> Dr. <%= appointment.doctor_first_name %> <%= appointment.doctor_last_name %></p>
+                                    <p><strong>Doctor:</strong> Dr. 
+                                        <%= appointment.doctor_first_name %> <%= appointment.doctor_last_name %></p>
                                     <p><strong>Date:</strong> <%= appointment.appointment_date %></p>
                                     <p><strong>Time:</strong> <%= appointment.appointment_time %></p>
                                     <p><strong>Speciality:</strong> <%= appointment.provider_specialty %></p>
@@ -213,6 +209,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="/patientDashboard.js"></script>
 </body>
 </html>

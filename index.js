@@ -19,6 +19,10 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     app.use(express.static(path.join(__dirname,  'public')));
 
     // Session configuration
+    //Maintain session on page reload
+
+
+
     const mysqlSessionStore = new mysqlSession({}, db);
     app.use(session({
         connectionLimit: 10,
