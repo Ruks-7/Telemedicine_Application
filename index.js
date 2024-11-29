@@ -46,7 +46,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 
     app.get('/', (req, res) => {
         try {
-        res.status(200).sendFile(path.join(__dirname, 'front_end', 'landingPage.html'));
+        res.status(200).sendFile(path.join(__dirname, 'front_end', 'index.html'));
     } catch (error) {
         console.error('Error serving landing page:', error);
         res.status(500).send({
