@@ -49,6 +49,8 @@ SESSION_SECRET=secret
 ## Project Structure
 ```bash
 telemedicine-application/
+├──api/
+│   └──index,js
 ├── backend/
 │   ├── config/
 │   │   └── db.js
@@ -66,8 +68,8 @@ telemedicine-application/
 │   └── images/
 ├── views/
 │   ├── doctorDashboard/
-│   ├── patientDashboard/
-├── index.js
+│   └── patientDashboard/
+├── vercel.json
 └── package.json
 ```
 

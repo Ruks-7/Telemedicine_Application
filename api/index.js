@@ -19,10 +19,6 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     app.use(express.static(path.join(__dirname,  '../public')));
 
     // Session configuration
-    //Maintain session on page reload
-
-
-
     const mysqlSessionStore = new mysqlSession({}, db);
     app.use(session({
         connectionLimit: 10,
@@ -41,7 +37,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     
   // Set view engine to EJS
     app.set('view engine', 'ejs');
-    app.set('views', path.join(__dirname, "../", "views"));
+    app.set('views', path.join(__dirname, '../views'));
 
     app.get('/', (req, res) => {
         try {
