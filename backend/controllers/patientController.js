@@ -177,7 +177,7 @@ const logout = (req, res) => {
         }
 
         res.clearCookie('connect.sid');
-        res.redirect('/auth/login');
+        res.redirect('/login');
     });
 };
 
@@ -185,7 +185,7 @@ const logout = (req, res) => {
 const bookAppointment = async (req, res) => {
     // Check if user is logged in
     if (!req.session.userId || !req.session.patientId) {
-        return res.redirect('/auth/login');
+        return res.redirect('/login');
     }
 
     console.log(req.body);

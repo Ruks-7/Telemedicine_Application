@@ -118,8 +118,6 @@ const loginProvider = async (req, res) => {
 //Doctor Dashboard
 const doctorDashboard = async (req, res) => {
 
-    console.log('User ID:', req.session.userId);
-    console.log('Doctor ID:', req.session.providerId);
     if (!req.session.userId || !req.session.providerId) {
         return res.status(401).send({
             success: false,
@@ -168,7 +166,6 @@ const doctorDashboard = async (req, res) => {
 
         const [upcomingAppointments] = await db.query(upcoming, [req.session.providerId, ]);
 
-
          // Render the doctor dashboard
         res.render('doctorDashboard.ejs', {
             doctorData,
@@ -190,9 +187,6 @@ const doctorDashboard = async (req, res) => {
 //Authentication
 function Authenticated(req, res, next) {
 
-    console.log('User_ID:', req.session.userId);
-    console.log('Patient_ID:', req.session.providerId);
-    console.log(req.session);
     if (req.session.userId && req.session.providerId) {
         return next();
     }
