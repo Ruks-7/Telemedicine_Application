@@ -1,8 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const ejs = require('ejs');
-const db = require('./backend/config/db');
-const routes= require('./backend/routes/auth');
+const db = require('../backend/config/db');
+const routes= require('../backend/routes/auth');
 const session = require('express-session');
 const mysqlSession = require('express-mysql-session')(session);
 const crypto = require('crypto'); // For generating secret key
@@ -16,7 +16,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     // Middleware
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use(express.static(path.join(__dirname,  'public')));
+    app.use(express.static(path.join(__dirname,  '../public')));
 
     // Session configuration
     //Maintain session on page reload
@@ -41,12 +41,11 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     
   // Set view engine to EJS
     app.set('view engine', 'ejs');
-    app.set('views', path.join(__dirname, 'views'));
-
+    app.set('views', path.join(__dirname, "../", "views"));
 
     app.get('/', (req, res) => {
         try {
-        res.status(200).sendFile(path.join(__dirname, 'front_end', 'index.html'));
+        res.status(200).sendFile(path.join(__dirname, "../", "front_end", 'index.html'));
     } catch (error) {
         console.error('Error serving landing page:', error);
         res.status(500).send({
@@ -58,7 +57,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 
     app.get('/provider-signUp', (req, res) => {
         try {
-        res.status(200).sendFile(path.join(__dirname, 'front_end', 'doctorSignup.html'));
+        res.status(200).sendFile(path.join(__dirname, "../", 'front_end', 'doctorSignup.html'));
     } catch (error) {
         console.error('Error serving sign up page for doctors:', error);
         res.status(500).send({
@@ -70,7 +69,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 
     app.get('/provider-login', (req, res) => {
         try {
-        res.status(200).sendFile(path.join(__dirname, 'front_end', 'doctorLogin.html'));
+        res.status(200).sendFile(path.join(__dirname, "../", 'front_end', 'doctorLogin.html'));
         }
         catch (error) {
         console.error('Error serving login page for doctors:', error);
@@ -83,7 +82,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 
     app.get('/register', (req, res) => {
         try {
-        res.status(200).sendFile(path.join(__dirname, 'front_end', 'signUp.html'));
+        res.status(200).sendFile(path.join(__dirname, "../", 'front_end', 'signUp.html'));
     } catch (error) {
         console.error('Error serving registration page:', error);
         res.status(500).send({
@@ -95,7 +94,7 @@ const secretKey = crypto.randomBytes(32).toString('hex');
 
     app.get('/login', (req, res) => {
         try {
-            res.status(200).sendFile(path.join(__dirname, 'front_end', 'login.html'));
+            res.status(200).sendFile(path.join(__dirname, "../", 'front_end', 'login.html'));
         } catch (error) {
             console.error('Error serving login page:', error);
             res.status(500).send({
