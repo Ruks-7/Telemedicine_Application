@@ -90,6 +90,7 @@ telemedicine-application/
 - Consultation scheduling
 
 
-
+## N/B
+### I did not follow the ERD to the letter, nevertheless it is a great guide
 
 
