@@ -93,7 +93,7 @@ const loginProvider = async (req, res) => {
         // Fetch provider ID based on user ID
         const providerQuery = 'SELECT * FROM providers WHERE user_id = ?';
         const [providerCheck] = await db.query(providerQuery, [user.user_id]);
-        console.log(providerCheck);
+
         if (providerCheck.length > 0) {
             req.session.providerId = providerCheck[0].provider_id; 
         }
@@ -143,13 +143,20 @@ const doctorDashboard = async (req, res) => {
         const doctorData = doctorResults[0];
 
         //Patient query
-        const patientQuery = `SELECT * FROM patients`;
-        const [patients] = await db.query(patientQuery);
+        const patientQuery = `SELECT * FROM medical_records WHERE provider_id = ?`;
+        const [patients] = await db.query(patientQuery, [req.session.providerId]);
 
         //Appointment query
         const appointmentQuery = `
-            SELECT * FROM appointments
-            WHERE provider_id = ?`;
+            SELECT 
+                a.*,
+                p.first_name AS patient_first_name,
+                p.last_name AS patient_last_name
+            FROM appointments a
+            LEFT JOIN patients p ON a.patient_id = p.patient_id
+            WHERE a.provider_id = ? AND a.appointment_date >= CURDATE()
+            ORDER BY a.appointment_date ASC`;
+
         const [appointments] = await db.query(appointmentQuery, [req.session.providerId]);
 
         //Today appointments
@@ -184,6 +191,68 @@ const doctorDashboard = async (req, res) => {
     }
 };
 
+//Update appointment status
+const updateStatus = async (req,res)=>{
+
+    if (!req.session.userId || !req.session.providerId) {
+        return res.status(401).send({
+            success: false,
+            message: 'Unauthorized'
+        });
+    }
+
+    const {appointmentId, status} = req.body;
+
+    try{
+        const updateQuery =`
+            UPDATE appointments 
+            SET status = ?
+            WHERE appointment_id = ?
+        `;
+
+        await db.query(updateQuery, [status, appointmentId]);
+
+        return res.status(201).send({
+            success: true,
+            message: "Appointment confirmed successfully!"
+        });
+    }
+
+    catch(error){
+        return res.status(500).send({
+            success: false,
+            message: "Error updating appointment status!"
+        });
+    }
+};
+
+//Cancel appointment
+const cancelAppointment = async (req, res) => {
+    const { appointmentId, status } = req.body;
+
+    try {
+        const cancelQuery = `
+            UPDATE appointments
+            SET status = ?
+            WHERE appointment_id = ?
+        `;
+
+        await db.query(cancelQuery, [status, appointmentId]);
+
+        return res.status(201).send({
+            success: true,
+            message: 'Appointment cancelled successfully!'
+        });
+    } 
+    catch (error) {
+        console.error('Error cancelling appointment:', error);
+        return res.status(500).send({
+            success: false,
+            message: 'Error cancelling appointment'
+        });
+    }
+};
+
 //Authentication
 function Authenticated(req, res, next) {
 
@@ -198,5 +267,7 @@ module.exports = {
     registerProvider,
     loginProvider,
     doctorDashboard,
+    updateStatus,
+    cancelAppointment,
     Authenticated
 };

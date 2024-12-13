@@ -32,10 +32,17 @@
 }
 
 .table thead th {
-    background-color: var(--light);
     color: var(--dark);
     border: none;
     padding: 1rem;
+}
+
+.table th{
+    background-color: var(--light);
+}
+
+thead{
+    background-color: var(--secondary);
 }
 
 .table tbody tr {
@@ -69,30 +76,21 @@
 }
 
 .badge-cancelled {
-    background-color: #dc3545;
+    background-color: red;
     color: white;
 }
 
 /* Action Buttons */
 .btn-primary {
-    background-color: #347474;
+    background-color: red;
     border: none;
     transition: transform 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: #e64a19;
-    transform: translateY(-2px);
-}
-
 .btn-success {
-    background-color: #28a745;
+    background-color: #0f6423;
     border: none;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    border: none;
+    transition: transform 0.3s ease;
 }
 
 /* Cards */
@@ -191,3 +189,10 @@
     }
 }
 
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}

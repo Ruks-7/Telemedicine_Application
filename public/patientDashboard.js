@@ -49,7 +49,7 @@ async function submitData(appointmentData) {
 
         if(response.ok){
             showSuccessMessage(data.message);
-
+            window.location.reload();
         }   
         else {
             showErrorMessage(data.message);

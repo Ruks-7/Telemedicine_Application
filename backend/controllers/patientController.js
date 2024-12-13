@@ -140,17 +140,16 @@ const patientDashboard = async (req, res) => {
             ORDER BY a.appointment_date DESC`;
 
         const [patientData] = await db.query(query, [req.session.patientId]);
-        console.log(patientData);
 
         //Get doctors
         const doctorQuery = 'SELECT * FROM providers';
         const [doctors] = await db.query(doctorQuery);
 
-        // Group medical records
+        // Group medical records(Includes defined diagnosis)
         const medicalRecords = patientData.filter(record => record.diagnosis);
         
-        // Group appointments
-        const appointments = patientData.filter(record => record.appointment_date);
+        // Group appointments & it is greater than current date
+        const appointments = patientData.filter(appointment => appointment.appointment_date && new Date(appointment.appointment_date) >= new Date());
 
         res.render('patientsDashboard.ejs', {
             patientData, medicalRecords, appointments, doctors,
