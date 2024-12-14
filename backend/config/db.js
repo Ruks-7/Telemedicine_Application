@@ -10,7 +10,9 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: cert
+    ssl: {
+        ca: fs.readFileSync('C:\Users\HP\Desktop\Coding\PLP Academy\Project\Telemedicine_Application\backend\config\DigiCertGlobalRootCA.crt.pem')
+    }
 });
 
 module.exports = pool.promise();
