@@ -11,7 +11,7 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     ssl: {
-        ca: fs.readFileSync('C:\Users\HP\Desktop\Coding\PLP Academy\Project\Telemedicine_Application\backend\config\DigiCertGlobalRootCA.crt.pem')
+        ca: fs.readFileSync(cert), // path to your certificate
     }
 });
 
