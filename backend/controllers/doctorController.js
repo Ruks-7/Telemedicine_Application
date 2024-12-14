@@ -197,7 +197,8 @@ const updateStatus = async (req,res)=>{
     if (!req.session.userId || !req.session.providerId) {
         return res.status(401).send({
             success: false,
-            message: 'Unauthorized'
+            message: 'Unauthorized',
+            redirect: '/auth/provider-login'
         });
     }
 
