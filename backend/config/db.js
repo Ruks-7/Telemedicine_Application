@@ -11,7 +11,7 @@ const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: process.env.NODE_ENV === 'production' ? {ca: ssl_cert} : false
+    ssl: {ca: ssl_cert}
 });
 
 module.exports = pool.promise();
