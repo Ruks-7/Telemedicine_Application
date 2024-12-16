@@ -24,11 +24,11 @@ const secretKey = crypto.randomBytes(32).toString('hex');
         secret: secretKey,
         store: mysqlSessionStore,
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
         cookie: { 
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: false,
-            secure: true
+            httpOnly: true,
+            secure: false
         }
     }));
 
