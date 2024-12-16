@@ -18,7 +18,7 @@ MyHealthCare is a comprehensive telemedicine platform enabling virtual healthcar
 - **Template Engine**: EJS
 - **Authentication**: session-based,bcrypt
 - **Session Management**: express-session, express-mysql-session
-- **Other Tools**: Font Awesome, Visual Studio Code
+- **Other Tools**: Font Awesome, Visual Studio Code, Azure Database for MySQL flexible server
 
 ## Prerequisites
 - Node.js (v14+)

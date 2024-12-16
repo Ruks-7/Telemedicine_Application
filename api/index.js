@@ -22,11 +22,6 @@ const secretKey = crypto.randomBytes(32).toString('hex');
     const mysqlSessionStore = new mysqlSession({}, db);
     app.use(session({
         connectionLimit: 10,
-        waitForConnections: true,
-        queueLimit: 0,
-        connectTimeout: 10000,
-        acquireTimeout: 10000,
-        timeout: 10000,
         secret: secretKey,
         store: mysqlSessionStore,
         resave: false,
